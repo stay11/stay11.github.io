@@ -135,7 +135,7 @@ footer{max-width:960px;margin:0 auto;padding:0 16px 32px;color:var(--sub);font-s
 <div class="search"><input id="q" type="search" placeholder="資格名・科目名で探す（例：看護、宅建、英単語）" aria-label="アプリを探す"></div>
 <nav class="chips">{{CHIPS}}</nav>
 <main>{{SECTIONS}}<p class="empty" id="empty">見つかりませんでした。別の言葉でお試しください。</p></main>
-<footer>App Store の情報をもとに作成（{{UPDATED}}更新）。リンク先は App Store です。</footer>
+<footer>App Store の情報をもとに作成（{{UPDATED}}更新）。リンク先は App Store です。<br><a href="terms.html" style="color:inherit">利用規約</a>　／　<a href="privacy.html" style="color:inherit">プライバシーポリシー</a></footer>
 <script>
 const q=document.getElementById('q'),empty=document.getElementById('empty');
 const norm=s=>s.normalize('NFKC').toLowerCase().replace(/[\\u3041-\\u3096]/g,c=>String.fromCharCode(c.charCodeAt(0)+0x60));
