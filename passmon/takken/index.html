@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>宅建士-パスモン</title>
+<meta name="description" content="宅建士試験の過去問アプリ「宅建士-パスモン」。お使いのスマホに合わせて App Store か Google Play を開きます。">
+<meta property="og:title" content="宅建士-パスモン">
+<meta property="og:description" content="法改正に対応した宅建士の過去問アプリ。全問解説・本番と同じ50問の模試つき。">
+<meta property="og:image" content="https://stay11.github.io/passmon/takken/icon.png">
+<link rel="icon" href="icon.png">
+<style>
+:root{--bg:#F3F5FA;--card:#FFFFFF;--border:#DCE3F0;--text:#1C2845;--sub:#5B6785;--accent:#4263EB;--on:#FFFFFF}
+@media (prefers-color-scheme: dark){:root{--bg:#00071F;--card:#1A2442;--border:#28355E;--text:#FFFFFF;--sub:#A9B4D0;--accent:#6F8BFF;--on:#FFFFFF}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN",sans-serif;line-height:1.6}
+main{max-width:480px;margin:0 auto;padding:40px 16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:24px 20px;text-align:center}
+.icon{width:96px;height:96px;border-radius:22px;display:block;margin:0 auto 12px}
+h1{font-size:22px;margin:0 0 4px;font-weight:800}
+.lead{color:var(--sub);font-size:14px;margin:0 0 20px}
+.btn{display:block;text-decoration:none;font-weight:700;font-size:16px;padding:14px 16px;border-radius:14px;margin-top:10px}
+.primary{background:var(--accent);color:var(--on)}
+.secondary{background:transparent;color:var(--accent);border:1px solid var(--border)}
+.note{color:var(--sub);font-size:13px;margin:12px 0 0}
+.status{color:var(--sub);font-size:13px;min-height:1.6em;margin:0 0 4px}
+footer{text-align:center;color:var(--sub);font-size:12px;margin-top:20px}
+footer a{color:var(--sub)}
+</style>
+</head>
+<body>
+<main>
+  <div class="card">
+    <img class="icon" src="icon.png" alt="" width="96" height="96">
+    <h1>宅建士-パスモン</h1>
+    <p class="lead">法改正に対応した宅建士の過去問・全問解説・本番と同じ50問の模試</p>
+    <p class="status" id="status"></p>
+    <a class="btn primary" id="ios" href="https://apps.apple.com/jp/app/id1584980966">App Store で開く（iPhone・iPad）</a>
+    <a class="btn secondary" id="android" href="https://play.google.com/store/apps/details?id=com.takkenn">Google Play で開く（Android）</a>
+    <p class="note" id="androidNote" hidden>Android 版は準備中です。公開までもう少しお待ちください。</p>
+  </div>
+  <footer><a href="../">パスモンシリーズのアプリ一覧</a></footer>
+</main>
+<script>
+// 開いた端末に合わせてストアへ送る（YouTube の説明欄などに貼る1本のリンク用）。
+// Android 版を Google Play で公開したら ANDROID_READY を true にする。
+(function () {
+  var ANDROID_READY = false;
+  var ua = navigator.userAgent || "";
+  var isAndroid = /Android/.test(ua);
+  // iPadOS は Mac と名乗るので、タッチのある Mac も iPad とみなす（Android を先に判定する）
+  var isIOS = !isAndroid && (/iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1));
+  var ios = document.getElementById("ios"), android = document.getElementById("android");
+  var status = document.getElementById("status"), note = document.getElementById("androidNote");
+  if (!ANDROID_READY) { android.hidden = true; }
+  if (isIOS) {
+    status.textContent = "App Store を開いています…";
+    location.replace(ios.href);
+  } else if (isAndroid) {
+    if (ANDROID_READY) {
+      status.textContent = "Google Play を開いています…";
+      location.replace(android.href);
+    } else {
+      note.hidden = false;
+    }
+  }
+})();
+</script>
+</body>
+</html>
